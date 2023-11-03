@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @RequestMapping("/students")
 public class StudentController {
     @Autowired
@@ -36,7 +36,7 @@ public class StudentController {
 
     @PostMapping("/new-student")
     public void saveStudent(@RequestBody StudentEntity student){
-        studentService.saveStudent(student);
+        studentService.saveStudentFirstTime(student);
     }
 
     @DeleteMapping("/delete-all")
@@ -58,8 +58,15 @@ public class StudentController {
     }
 
     @PostMapping("/set-max-number-of-fees/{rut}/{number_of_fees}")
-    public void setMaxNumberOfFees(@PathVariable("rut") String rut, @PathVariable("number_of_fees") Integer number_of_fees){
-        studentService.setPaymentMethod(rut, number_of_fees);
+    public ResponseEntity<Boolean> setMaxNumberOfFees(@PathVariable("rut") String rut, @PathVariable("number_of_fees") String number_of_fees){
+        Integer number_fees = Integer.parseInt(number_of_fees);
+        studentService.setPaymentMethod(rut, number_fees);
+
+        if(studentService.getStudents().isEmpty()){
+            return ResponseEntity.ok(false);
+        }
+
+        return ResponseEntity.ok(true);
     }
 
     @GetMapping("/calculate-discount-senior-year/{rut}")
@@ -80,6 +87,12 @@ public class StudentController {
         }
 
         return ResponseEntity.ok(studentService.calculateDiscountBySchoolType(rut));
+    }
+
+    @PutMapping("/set-final-price/{rut}/{final_price}")
+    public void setFinalPriceByAverage_InterestDiscount(@PathVariable("rut") String rut,
+                                                        @PathVariable("final_price") Double final_price){
+        studentService.setFinalPriceByDiscounts(rut, final_price);
     }
 
 }

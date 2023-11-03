@@ -40,6 +40,20 @@ public class StudentService {
         return studentRepository.findByRut(rut);
     }
 
+    // 1.
+    public void saveStudentFirstTime(StudentEntity student){
+        if(student.getSchool_type().equals("Municipal")){
+            student.setNumber_of_fees(10);
+        }else if(student.getSchool_type().equals("Subvencionado")){
+            student.setNumber_of_fees(7);
+        }else{
+            student.setNumber_of_fees(4);
+        }
+        student.setFinal_price(1500000.0);
+
+        studentRepository.save(student);
+    }
+
     public void saveStudent(StudentEntity student){
         studentRepository.save(student);
     }
@@ -106,8 +120,8 @@ public class StudentService {
             }else{
                 student.setNumber_of_fees(Math.min(number_of_fees, 4));
             }
-        }else{
-            student.setPayment_method("Contado");
+            System.out.println(student.getSchool_type() + " " + number_of_fees);
+            student.setPayment_method("Cuotas");
         }
 
         saveStudent(student);
@@ -124,17 +138,24 @@ public class StudentService {
         saveStudent(student);
     }
 
+    //2.
     public void setPaymentMethod(String rut, Integer number_of_fees){
         StudentEntity student = findByRut(rut);
         if(number_of_fees == 0){
+            student.setNumber_of_fees(0);
             student.setPayment_method("Contado");
-        }else{
-            student.setPayment_method("Cuotas");
         }
 
         setFinalPriceByPaymentMethod(rut);
         setMaxNumberOfFees(rut, number_of_fees);
         Double final_price = calculateFinalPriceByDiscounts(rut);
+        student.setFinal_price(final_price);
+        saveStudent(student);
+        restTemplate.postForObject("http://fee-service/fees/generate-fees/"+rut+"/"+student.getNumber_of_fees(), student, Boolean.class);
+    }
+
+    public void setFinalPriceByDiscounts(String rut, Double final_price){
+        StudentEntity student = findByRut(rut);
         student.setFinal_price(final_price);
         saveStudent(student);
     }
