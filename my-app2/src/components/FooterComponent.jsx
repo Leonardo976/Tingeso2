@@ -4,8 +4,7 @@ import styled from 'styled-components';
 const FooterComponent = () => {
     return (
         <FooterContainer>
-            <p>Valentina Paz Campos Olguín</p>
-            <p>Técnicas de Ingeniería de Software</p>
+            <p>Tingeso</p>
             <p>2-2023</p>
         </FooterContainer>
     );
