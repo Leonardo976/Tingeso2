@@ -10,7 +10,7 @@ export default function Home() {
             <NavBarComponent4 />
             <GlobalStyle/>
             <HomeStyle>
-                <h1 className="text-center"><b>Bienvenido a TopEducation</b></h1>
+                <h1 className="text-center"><b>Menú principal</b></h1>
                 <div className="box-area">
                     <div className="single-box">
                         <a href="/new-student">
@@ -92,37 +92,41 @@ export default function Home() {
 }
 
 const GlobalStyle = createGlobalStyle`
-body {
-      background-color: #FFFFFF;
-      font-family: Cantarell,sans-serif;
-    }
+  body {
+    background-color: #ffffff;
+    font-family: Cantarell, "Arial Black";
+  }
 `
 
+
 const HomeStyle = styled.nav`
-.text-center {
+  .text-center {
     text-align: center;
     justify-content: center;
     padding-top: 50px;
     padding-bottom: 30px;
-    color: #190482;
+    color: #36c1e0;
     font-weight: 700;
-    font-size: 50px;
-    font-family: Cantarell,sans-serif;
-}
+    font-size: 52px;
+    font-style: oblique;
+    text-shadow: 2px  1px 1px black;
+    font-family: "Arial Black", "Arial Black";
+  }
 
-.box-area {
+  .box-area {
     cursor: pointer;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    
-}
 
-.single-box {
-    box-shadow: 0 7px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  .single-box {
+    box-shadow: 0 7px 25px -5px rgba(1, 1, 1, 1);
     position: relative;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -136,9 +140,29 @@ const HomeStyle = styled.nav`
     margin: 20px;
     padding: 20px;
     transition: .3s
-}
+  }
 
-.img-area{
+  
+  .header-text {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 70px;
+    font-family: "Arial Black", "Arial Black";
+  }
+
+  .img-text p {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 30px;
+    font-family: "Arial Black", "Arial Black";
+  }
+
+  .single-box:hover {
+    transform: translateY(-5px);
+    background: #12a7c2;
+    color: #fff;
+  }
+  .img-area{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,52 +173,10 @@ const HomeStyle = styled.nav`
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center center;
-}
+  }
 
-.single-box:nth-child(1) .img-area{
-    background-image: url(https://img.icons8.com/?size=512&id=UkLBG0sZoWV0&format=png)
-}
-
-.header-text{
-    font-size: 23px;
-    font-weight: 500;
-    line-height: 48px;
-    font-family: Cantarell,sans-serif;
-}
-.img-text p{
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 30px;
-    font-family: Cantarell,sans-serif;
-}
-.single-box:hover{
-    transform: translateY(-5px);
-    background: #8E8FFA;
-    color: #fff;}
-
-.single-box:nth-child(2) .img-area{
-        background-image: url(https://img.icons8.com/?size=512&id=295&format=png)
-}
-.single-box:nth-child(3) .img-area{
-        background-image: url(https://img.icons8.com/?size=512&id=56793&format=png)
-}
-.single-box:nth-child(4) .img-area{
-        background-image: url(https://img.icons8.com/?size=512&id=48800&format=png)
-}
-.single-box:nth-child(5) .img-area{
-        background-image: url(https://img.icons8.com/?size=512&id=78059&format=png)
-}
-.single-box:nth-child(6) .img-area{
-    background-image: url(https://img.icons8.com/?size=512&id=11645&format=png)
-}
-.single-box:nth-child(7) .img-area{
-    background-image: url(https://img.icons8.com/?size=512&id=48622&format=png)
-}
-.single-box:nth-child(8) .img-area{
-    background-image: url(https://img.icons8.com/?size=512&id=11705&format=png)
-}
-
-.login-box{
+  .login-box {
     cursor: pointer;
-}
+  }
 `
+

@@ -101,11 +101,11 @@ export default function GenerateFeeComponent(props){
 
 const Styles = styled.div`
 
-.text-center {
+  .text-center {
     text-align: center;
     justify-content: center;
     padding-top: 8px;
-    font-family: Cantarell,sans-serif;
+    font-family: Cantarell, sans-serif;
     font-size: 30px;
     letter-spacing: 0px;
     word-spacing: 2px;
@@ -115,73 +115,73 @@ const Styles = styled.div`
     font-style: normal;
     font-variant: normal;
     text-transform: uppercase;
-}
+  }
 
-.home{
-    font-family: Cantarell,sans-serif;
+  .home {
+    font-family: Cantarell, sans-serif;
     background-color: #ffffff;
     margin: 0;
     padding: 0;
-}
+  }
 
-.mainclass{
+  .mainclass {
     margin-top: 20px;
     display: flex;
     justify-content: center;
-    font-family: Cantarell,sans-serif;
+    font-family: Cantarell, sans-serif;
     font-size: 15px;
-}
+  }
 
-.form1{
-    font-family: Cantarell,sans-serif;
+  .form1 {
+    font-family: Cantarell, sans-serif;
     background-color: #f0f0f0;
     width: 30%;
     padding: 40px;
     border-radius: 20px;
-}
+  }
 
-input[type=rut], input[type=date], input[type=text], select, textarea {
+  input[type=rut], input[type=date], input[type=text], select, textarea {
     width: 100%;
     padding: 8px 8px;
     margin: 0px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-}
+  }
 
-Button {
-    font-family: Cantarell,sans-serif;
+  Button {
+    font-family: Cantarell, sans-serif;
     color: white;
     padding: 14px 0;
     margin: 10px 0;
     border: none;
     cursor: grabbing;
     width: 100%;
-}
+  }
 
-Button:hover {
+  Button:hover {
     opacity: 0.8;
-}
+  }
 
-.formcontainer {
-    font-family: Cantarell,sans-serif;
+  .formcontainer {
+    font-family: Cantarell, sans-serif;
     text-align: left;
     margin: 24px 50px 9px;
-}
+  }
 
-.container {
-    font-family: Cantarell,sans-serif;
+  .container {
+    font-family: Cantarell, sans-serif;
     padding: 24px 0;
-    text-align:left;
-}
+    text-align: left;
+  }
 
-span.psw {
+  span.psw {
     float: right;
     padding-top: 0;
     padding-right: 15px;
-}
+  }
 
-.boton {
-    background-color: #7752FE;
-}
+  .boton {
+    background-color: #168397;
+  }
 `

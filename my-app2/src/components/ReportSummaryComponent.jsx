@@ -86,7 +86,7 @@ class ReportSummaryComponent extends Component {
 export default ReportSummaryComponent;
 
 const Styles = styled.div`
-.text-center {
+  .text-center {
     text-align: center;
     justify-content: center;
     padding-top: 8px;
@@ -100,20 +100,22 @@ const Styles = styled.div`
     font-style: normal;
     font-variant: normal;
     text-transform: uppercase;
-}
+  }
 
-.f{
+  .f {
     justify-content: center;
     align-items: center;
     display: flex;
-}
-*{
+  }
+
+  * {
     font-family: sans-serif;
     box-sizing: content-box;
     margin: 0;
     padding: 0;
-}
-.content-table{
+  }
+
+  .content-table {
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.8em;
@@ -123,41 +125,47 @@ const Styles = styled.div`
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     margin-left: 4%;
     margin-right: 4%;
-}
-.content-table thead tr{
+  }
+
+  .content-table thead tr {
     background-color: #009879;
     color: #ffffff;
     text-align: center;
     font-weight: bold;
-}
-.content-table th,
-.content-table td{
+  }
+
+  .content-table th,
+  .content-table td {
     padding: 12px 15px;
     text-align: center;
-}
-.content-table tbody tr{
+  }
+
+  .content-table tbody tr {
     border-bottom: 1px solid #dddddd;
-}
-.content-table tbody tr:nth-of-type(even){
+  }
+
+  .content-table tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
-}
-.content-table tbody tr:last-of-type{
+  }
+
+  .content-table tbody tr:last-of-type {
     border-bottom: 2px solid #009879;
-}
-.content-table tbody tr.active-row{
+  }
+
+  .content-table tbody tr.active-row {
     font-weight: bold;
     color: #009879;
-}
+  }
 
-.container{
+  .container {
     text-align: center;
     justify-content: center;
     padding-top: 30px;
     line-height: 3;
-}
+  }
 
-.boton{
-    background-color: #3D30A2;
+  .boton {
+    background-color: #168397;
     color: #ffffff;
     text-align: center;
     font-weight: bold;
@@ -175,13 +183,13 @@ const Styles = styled.div`
     transition-duration: 0.4s;
     margin: 4px 2px;
     margin-top: 20px;
-}
+  }
 
-.title{
+  .title {
     padding-bottom: 30px;
-}
+  }
 
-.table {
+  .table {
     margin-bottom: 5rem;
-}
+  }
 `

@@ -22,23 +22,25 @@ function NavBarComponent4(){
 export default NavBarComponent4;
 
 const NavStyle = styled.nav`
-.header{
-    background-color: #3D30A2;
+  .header {
+    background-color: #168397;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     height: 85px;
     padding: 5px 10%;
   }
-  .header .logo{
+
+  .header .logo {
     margin-right: auto;
     color: white;
-    font-family: Cantarell,sans-serif;
+    font-family: Cantarell, sans-serif;
     display: flex;
     align-items: center;
     gap: 10px;
   }
-.header .btn button{
+
+  .header .btn button {
     margin-left: 20px;
     font-weight: 700;
     color: #1b3039;
@@ -49,12 +51,14 @@ const NavStyle = styled.nav`
     cursor: pointer;
     transition: all 0.3s ease 0s;
   }
-.header .btn button:hover{
+
+  .header .btn button:hover {
     background-color: #e2f1f8;
     color: #ffbc0e;
     transform: scale(1.1);
   }
-.header .btn-2 button {
+
+  .header .btn-2 button {
     margin-left: 20px;
     font-weight: 700;
     color: #1b3039;
@@ -65,9 +69,10 @@ const NavStyle = styled.nav`
     cursor: pointer;
     transition: all 0.3s ease 0s;
   }
-.header .btn-2 button:hover{
+
+  .header .btn-2 button:hover {
     background-color: #e2f1f8;
     color: #ffbc0e;
     transform: scale(1.1);
-}
+  }
 `
