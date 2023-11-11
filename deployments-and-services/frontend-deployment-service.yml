@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: valenpy22/frontend_2:latest
+          image: leonardom20/my-app2:latest
           ports:
             - containerPort: 3000
 ---

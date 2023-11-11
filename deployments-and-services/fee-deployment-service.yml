@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: fee-service
-          image: valenpy22/fee-service:latest
+          image: leonardom20/fee-service:latest
           ports:
             - containerPort: 8082
           env:

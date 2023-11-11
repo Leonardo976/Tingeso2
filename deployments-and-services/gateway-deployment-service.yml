@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: gateway-service
-          image: valenpy22/gateway-service:latest
+          image: leonardom20/gateway-service:latest
           ports:
             - containerPort: 8080
           env:

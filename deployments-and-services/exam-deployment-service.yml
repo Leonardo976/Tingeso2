@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: exam-service
-          image: valenpy22/exam-service:latest
+          image: leonardom20/exam-service:latest
           ports:
             - containerPort: 8084
           env:

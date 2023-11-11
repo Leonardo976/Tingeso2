@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: config-service
-          image: valenpy22/config-service:latest
+          image: leonardom20/config-service:latest
           ports:
             - containerPort: 8081
 ---
