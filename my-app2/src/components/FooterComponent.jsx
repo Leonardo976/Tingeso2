@@ -11,8 +11,8 @@ const FooterComponent = () => {
 export default FooterComponent;
 
 const FooterContainer = styled.div`
-  background-color: #168397; 
-  color: white;
+  background-color: #168397; /* Color morado */
+  color: white; /* Letras blancas */
   text-align: center;
   padding: 20px 0;
   position: fixed;
