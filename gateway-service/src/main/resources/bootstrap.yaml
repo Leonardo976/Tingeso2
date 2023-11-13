@@ -12,11 +12,4 @@ spring:
     config:
       enabled: true
       uri: http://localhost:8081
-    gateway:
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOriginsPatterns: "http://localhost:[*]"
-            allowedMethods: "*"
-            allowedHeaders: "*"
-            allowCredentials: true
+    

@@ -17,8 +17,7 @@ spring:
       uri: http://localhost:8081
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    dbname: fees
-    url: jdbc:mysql://localhost:3306/fees?useSSL=false&serverTimezone=UTC&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://mysql:3306/fees?autorReconnect=true&allowPublicKeyRetrieval=true&useSSL=false
     username: root
     password: 1234
   jpa:
