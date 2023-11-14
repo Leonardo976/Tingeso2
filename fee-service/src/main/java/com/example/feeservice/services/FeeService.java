@@ -208,7 +208,6 @@ public class FeeService {
     }
 
     public void payFee(Integer feeId){
-        System.out.println(feeId);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String date_now = LocalDate.now().format(formatter);
         int month = LocalDate.now().getMonthValue();
@@ -217,17 +216,17 @@ public class FeeService {
         LocalDate min_date;
 
         if(month < 10){
-            max_date = LocalDate.parse("11/0"+month+"/"+year, formatter);
+            max_date = LocalDate.parse("15/0"+month+"/"+year, formatter);
             min_date = LocalDate.parse("04/0"+month+"/"+year, formatter);
         }else{
-            max_date = LocalDate.parse("11/"+month+"/"+year, formatter);
+            max_date = LocalDate.parse("15/"+month+"/"+year, formatter);
             min_date = LocalDate.parse("04/"+month+"/"+year, formatter);
         }
 
         LocalDate datenow = LocalDate.parse(date_now, formatter);
         FeeEntity fee = feeRepository.findById(feeId);
 
-        if(datenow.isBefore(max_date) ){
+        if(datenow.isBefore(max_date) && datenow.isAfter(min_date)){
             fee.setState("PAID");
             fee.setPayment_date(date_now);
         }else{

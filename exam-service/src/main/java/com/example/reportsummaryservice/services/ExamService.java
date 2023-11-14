@@ -18,6 +18,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -150,6 +152,13 @@ public class ExamService {
         Double total_debt = restTemplate.getForObject("http://fee-service/fees/total-debt/"+rut, Double.class);
         Integer late_fees = restTemplate.getForObject("http://fee-service/fees/count-late-fees/"+rut, Integer.class);
 
+        if(studentModel.getPayment_method().equals("Contado")){
+            final_price = 750000.0;
+            total_paid = 750000.0;
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            last_payment = LocalDate.now().format(formatter);
+        }
+
         ArrayList<Object> report = new ArrayList<>();
         report.add(rut);
         report.add(studentModel.getNames());
@@ -170,16 +179,32 @@ public class ExamService {
     }
 
     public List<Object> calculateDiscount(String rut){
-        Double discount_senior_year = restTemplate.getForObject("http://student-service/students/calculate-discount-senior-year/"+rut, Double.class);
-        Double discount_school_type = restTemplate.getForObject("http://student-service/students/calculate-discount-school-type/"+rut, Double.class);
+        StudentModel studentModel = restTemplate.getForObject("http://student-service/students/"+rut, StudentModel.class);
         String last_exam_date = getLastExamDate(rut);
         Double average_score = getAverageScoreByRutAndMonth(rut, last_exam_date);
 
-        Double discount_average_score = restTemplate.getForObject("http://fee-service/fees/score-discount/"+rut+"/"+average_score, Double.class);
+        Double discount_senior_year;
+        Double discount_school_type;
+        Double discount_average_score;
+        Double interest_months_late;
+        Double total_price_by_fees;
+
+        if(studentModel.getPayment_method().equals("Contado")){
+            discount_senior_year = 0.0;
+            discount_school_type = 0.0;
+            discount_average_score = 0.0;
+            interest_months_late = 0.0;
+            total_price_by_fees = 750000.0;
+        }else{
+            discount_senior_year = restTemplate.getForObject("http://student-service/students/calculate-discount-senior-year/"+rut, Double.class);
+            discount_school_type = restTemplate.getForObject("http://student-service/students/calculate-discount-school-type/"+rut, Double.class);
+            discount_average_score = restTemplate.getForObject("http://fee-service/fees/score-discount/"+rut+"/"+average_score, Double.class);
+            interest_months_late = restTemplate.getForObject("http://fee-service/fees/interest-months-late/"+rut, Double.class);
+            total_price_by_fees = restTemplate.getForObject("http://fee-service/fees/total-price-by-fees/"+rut, Double.class);
+        }
+
         restTemplate.put("http://fee-service/fees/score-discount/"+rut+"/"+average_score+"/put", Double.class);
-        Double interest_months_late = restTemplate.getForObject("http://fee-service/fees/interest-months-late/"+rut, Double.class);
         restTemplate.put("http://fee-service/fees/interest-months-late/"+rut+"/put", Double.class);
-        Double total_price_by_fees = restTemplate.getForObject("http://fee-service/fees/total-price-by-fees/"+rut, Double.class);
         restTemplate.put("http://student-service/students/set-final-price/"+rut+"/"+total_price_by_fees, Double.class);
 
         ArrayList<Object> discount = new ArrayList<>();
